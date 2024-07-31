@@ -32,8 +32,8 @@ body {
 }
 
 .container .item img {
-    width: 150px;
-    height: 220px;
+    width: 130px;
+    height: 200px;
 }
 
 .container .item:hover {
