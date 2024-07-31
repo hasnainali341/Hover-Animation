@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(10, 10, 10);
+}
+
+.container {
+    width: fit-content;
+    height: min-content;
+    display: flex;
+    gap: 5px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+
+.container .item {
+    filter: brightness(0);
+    transition: 0.5s;
+}
+
+.container .item img {
+    width: 150px;
+    height: 220px;
+}
+
+.container .item:hover {
+    filter: brightness(1);
+    transform: translateZ(140px);
+}
+
+.container .item:hover + * {
+    filter: brightness(0.6);
+    transform: translateZ(70px) rotateY(40deg);
+}
+.container .item:hover + * + * {
+    filter: brightness(0.4);
+    transform: translateZ(40px) rotateY(20deg);
+}
+.container .item:hover + * + * + * {
+    filter: brightness(0.25);
+    transform: translateZ(25px) rotateY(10deg);
+}
+
+.container .item:has(+ *:hover){
+    filter: brightness(0.6);
+    transform: translateZ(70px) rotateY(-40deg);
+}
+.container .item:has(+ * +  *:hover){
+    filter: brightness(0.4);
+    transform: translateZ(40px) rotateY(-20deg);
+}
+.container .item:has(+ * + * + *:hover){
+    filter: brightness(0.25);
+    transform: translateZ(25px) rotateY(-10deg);
+}
